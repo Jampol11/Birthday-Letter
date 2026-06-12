@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 22nd Birthday!</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Google Fonts: Playfair Display for headings, Dancing Script for letter -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===================== SPARKLE CANVAS ===================== -->
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== CONFETTI CANVAS ===================== -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== MAIN WRAPPER ===================== -->
+  <main class="scene" id="scene" role="main">
+
+    <!-- ---------- Birthday Header ---------- -->
+    <header class="birthday-header" aria-label="Birthday greeting">
+      <h1 class="birthday-title">Happy 22nd Birthday!</h1>
+      <p class="birthday-subtitle">A magical day just for you ✨</p>
+    </header>
+
+    <!-- ---------- Cake Section ---------- -->
+    <section class="cake-section" aria-label="Birthday cake">
+
+      <!-- Floating sparkles around cake -->
+      <div class="sparkles-ring" aria-hidden="true">
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+        <span class="sparkle-dot"></span>
+      </div>
+
+      <!-- Cake wrapper (floats gently) -->
+      <div class="cake-wrapper" id="cakeWrapper" aria-label="Three-layer birthday cake with candles">
+
+        <!-- Candles (above cake) -->
+        <div class="candles-row" id="candlesRow" aria-label="Three birthday candles">
+          <div class="candle candle-1" aria-label="Candle 1">
+            <div class="flame-glow"></div>
+            <div class="flame">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle candle-2" aria-label="Candle 2">
+            <div class="flame-glow"></div>
+            <div class="flame">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle candle-3" aria-label="Candle 3">
+            <div class="flame-glow"></div>
+            <div class="flame">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="candle-body"></div>
+          </div>
+        </div>
+
+        <!-- Cake layers (build bottom to top in DOM, animated bottom-up) -->
+        <div class="cake" id="cake">
+
+          <!-- Top layer -->
+          <div class="cake-layer cake-top" id="cakeTop">
+            <div class="icing-drip icing-drip-top" aria-hidden="true"></div>
+            <div class="layer-decoration">
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span>
+            </div>
+          </div>
+
+          <!-- Middle layer -->
+          <div class="cake-layer cake-middle" id="cakeMiddle">
+            <div class="icing-drip icing-drip-mid" aria-hidden="true"></div>
+            <div class="layer-decoration">
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+            </div>
+            <div class="frosting-swirl" aria-hidden="true">
+              <span>❀</span><span>❀</span><span>❀</span>
+            </div>
+          </div>
+
+          <!-- Bottom layer -->
+          <div class="cake-layer cake-bottom" id="cakeBottom">
+            <div class="icing-drip icing-drip-bot" aria-hidden="true"></div>
+            <div class="layer-decoration">
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span><span class="sprinkle"></span>
+              <span class="sprinkle"></span>
+            </div>
+            <div class="frosting-swirl" aria-hidden="true">
+              <span>❀</span><span>❀</span><span>❀</span><span>❀</span>
+            </div>
+          </div>
+
+          <!-- Cake base plate -->
+          <div class="cake-plate" aria-hidden="true"></div>
+        </div>
+
+      </div><!-- /cake-wrapper -->
+    </section>
+
+    <!-- ---------- Envelope Button ---------- -->
+    <section class="envelope-section" id="envelopeSection" aria-label="Birthday letter envelope">
+      <button class="envelope-btn" id="envelopeBtn" aria-label="Click to open birthday letter">
+        <!-- Envelope flap (top triangle) -->
+        <div class="env-flap" id="envFlap" aria-hidden="true"></div>
+        <!-- Envelope body -->
+        <div class="env-body" aria-hidden="true">
+          <div class="env-lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <!-- Envelope bottom-fold V shape -->
+        <div class="env-bottom-fold" aria-hidden="true"></div>
+        <span class="env-label">Click Me</span>
+      </button>
+    </section>
+
+    <!-- ---------- Letter Modal ---------- -->
+    <div class="letter-overlay" id="letterOverlay" role="dialog" aria-modal="true" aria-label="Birthday letter" aria-hidden="true">
+      <div class="letter-container" id="letterContainer">
+
+        <!-- Letter paper -->
+        <div class="letter-paper" id="letterPaper">
+          <button class="letter-close" id="letterClose" aria-label="Close letter">✕</button>
+
+          <div class="letter-content" id="letterContent">
+            <div class="letter-header-deco" aria-hidden="true">🌸 🎂 🌸</div>
+            <p class="letter-salutation">Dear Jay Ann,</p>
+            <h2 class="letter-title">Happy 22nd Birthday!</h2>
+            <p class="letter-body">
+              Today is a special day i-celebrate imong independence day 
+              kay ngayong araw malaya kana sa tiyan sa imo mama XD haha corny.
+              Thank you for bringing <em>joy</em>, kindness, laughter, and positivity
+              to the lives of those around you. Always i keep imong smile. I know mug-ot jud ta
+              normal face pero imong <em>smile</em> nag dalag kahayag sa imong face.
+            </p>
+            <p class="letter-body">
+              I know you know naay disconnection satoa but unta gi kalimtan na nimo tanan behind. I want us to be friends :>
+              I pray na mo lahutay ka till the end(gusto pa tika makita sa langit). Keep chasing your dreams. Keep believing and keep praying.
+              Mao lang to enjoy your day. 22 naka pag kuha nag valid ID. XD Ug ayaw na samoka imong siopao maynalang kung
+              ting gutom AHAHAHA bitaw siopao is one of the reason si Jay Ann ka.
+            </p>
+            <p class="letter-body">
+              Wishing you a happy happyyyy birthday. Unta okay rani akong gibuhat gi digital ra nako pangit kog agi
+              tas impossible mo hatag sa personal mao rato. Shalom🌟
+            </p>
+            <p class="letter-closing">With love and gratitude,</p>
+            <p class="letter-signature">Someone Who Appreciates You&nbsp;💕</p>
+            <div class="letter-footer-deco" aria-hidden="true">✨ 🌸 ✨</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main><!-- /scene -->
+
+  <script src="js/script.js"></script>
+</body>
+</html>
